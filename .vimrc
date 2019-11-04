@@ -38,7 +38,6 @@ Plugin 'junegunn/vader.vim'
 "Plugin 'mitsuhiko/vim-jinja'
 Plugin 'rip-rip/clang_complete'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'vim-scripts/cSyntaxAfter'
 "Plugin 'Valloric/vim-operator-highlight'
 "Plugin 'ap/vim-css-color'
 "Plugin 'Vimjas/vim-python-pep8-indent'
@@ -223,7 +222,11 @@ endfunction
 ":call HighlightNearCursor()
 
 set hidden
-autocmd! FileType c,cpp,java,php call CSyntaxAfter()
 
-syntax match longOperators "++\|--"
-hi longOperators guifg=green guibg=red
+" === This is to get coloring on special characters like (,=,{([, function is in EmilsColorScheme
+"autocmd! FileType c,cpp,java,php call CSyntaxAfter()
+
+" === This line removes the MatchParen
+"let loaded_matchparen = 1
+hi MatchParen cterm=bold ctermbg=none ctermfg=White
+
